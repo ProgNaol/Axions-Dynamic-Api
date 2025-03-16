@@ -1,22 +1,34 @@
 {
   "name": "axions-dynamic-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "description": "Axion Dynamics API - A real-time data aggregation and analytics API",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest --coverage",
+    "lint": "eslint . --fix",
+    "format": "prettier --write .",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ProgNaol/Axions-Dynamic-Api.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "API",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "WebSockets"
+  ],
+  "author": "ProgNaol",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ProgNaol/Axions-Dynamic-Api/issues"
   },
   "homepage": "https://github.com/ProgNaol/Axions-Dynamic-Api#readme",
-  "description": "",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "compression": "^1.8.0",
@@ -24,6 +36,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.1",
@@ -41,5 +54,16 @@
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
     "supertest": "^7.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
